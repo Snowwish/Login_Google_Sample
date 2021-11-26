@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SocialiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 //});
 
 //Route::get('/',);
-Route::get('user', function () {
-    return view('welcome');
-});
+/*Route::get('user', function () {
+    return view('test');
+});*/
+
+Route::get('/google/auth', [SocialiteController::class,'redirectToProvider']);
+Route::get('/google/auth/callback', [SocialiteController::class,'handleProviderCallback']);
